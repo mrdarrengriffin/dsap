@@ -1,6 +1,5 @@
 const path = require('path')
 const { defineConfig } = require('vite')
-import scss from 'rollup-plugin-scss';
 
 
 module.exports = defineConfig({
