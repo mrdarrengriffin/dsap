@@ -1,0 +1,27 @@
+body,html{
+    padding: 0;
+    margin: 0;
+}
+:root{
+    --base-color: #28a9ff;
+}
+
+.element{
+    height: 100vh;
+    font-size:72px;
+    display: grid;
+    place-items: center;
+}
+
+@for $i from 1 through 10{
+    .element:nth-child(#{$i}){
+        background-color: color-mix(in srgb, var(--base-color) calc(100% - #{$i * 10%}), transparent);
+    }
+}
+
+.fade-out{
+    opacity: calc(-5 * ((-500 + var(--dsap-scroll-delta)) / var(--dsap-max-scroll-delta)) + 1);
+}
+.fade-in{
+    opacity: calc(4 * (var(--dsap-scroll-delta)) / var(--dsap-max-scroll-delta) - 1);
+}

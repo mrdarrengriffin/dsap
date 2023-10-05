@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSAP Demo</title>
+</head>
+
+<body data-dsap>
+    <div class="element" data-dsap>
+        <div class="fade-out">I will fade out</div>
+    </div>
+    <div class="element" data-dsap>
+        <div class="fade-in">I will fade in</div>
+    </div>
+    <div class="element" data-dsap></div>
+    <div class="element" data-dsap></div>
+    <div class="element" data-dsap></div>
+    <script type="module">
+        import {DSAP} from './lib/main.js';
+        let d = new DSAP();
+    </script>
+</body>
+
+</html>
