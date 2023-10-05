@@ -9,18 +9,25 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mrdarrengriffin/dsap@0.0.1/dist/style.css">
 </head>
 
-<body data-dsap>
-    <div class="element" data-dsap>
-        <div class="fade-out">I will fade out</div>
-    </div>
-    <div class="element" data-dsap>
-        <div class="fade-in">I will fade in</div>
-    </div>
+<body>
     <div class="element" data-dsap></div>
+    <div class="element" data-dsap></div>
+    <div class="element" data-dsap>
+        <div class="fade-out">I will fade out
+            <img src="https://picsum.photos/200/300">
+
+        </div>
+    </div>
+    <div class="element" data-dsap>
+        <div class="fade-in">I will fade in
+            <img src="https://picsum.photos/200/300">
+
+        </div>
+    </div>
     <div class="element" data-dsap></div>
     <div class="element" data-dsap></div>
     <script type="module">
-        import { DSAP } from 'https://cdn.jsdelivr.net/gh/mrdarrengriffin/dsap@0.0.1/dist/dsap.es.js';
+        import { DSAP } from './lib/dsap.js';
         let d = new DSAP();
     </script>
 </body>
