@@ -14,6 +14,7 @@ html {
 }
 
 [data-dsap] {
+    --dsap-scroll-delta: 0;
     --percentage: calc(var(--dsap-scroll-delta) / var(--dsap-max-scroll-delta));
 }
 
@@ -52,8 +53,6 @@ code {
 
 .intro {
     --percentage: calc(var(--dsap-scroll-delta) / var(--dsap-max-scroll-delta));
-
-    height: 400vh;
     position: relative;
 }
 
@@ -62,28 +61,37 @@ code {
     position: relative;
     transition: font-weight .2s ease-out, opacity .2s ease-out, gap .2s ease-out, font-size .2s ease-out;
 
-    --font-from: 100;
-    --font-to: 900;
-    --font-start: .5;
-    --font-stop: .8;
-    font-weight: clamp(var(--font-from), calc(var(--font-from) + (var(--font-to) - var(--font-from)) * ((var(--percentage) - var(--font-start)) / (var(--font-stop) - var(--font-start)))), var(--font-to));
+    --font-weight-from: 100;
+    --font-weight-to: 900;
+    --font-weight-start: .5;
+    --font-weight-stop: .8;
+    font-weight: 500;
 
     --gap-from: 0px;
     --gap-to: 16px;
     --gap-start: .4;
     --gap-stop: .5;
-    gap: clamp(var(--gap-from), calc(var(--gap-from) + (var(--gap-to) - var(--gap-from)) * ((var(--percentage) - var(--gap-start)) / (var(--gap-stop) - var(--gap-start)))), var(--gap-to));
+    gap: 0px;
 
     --font-size-from: 64px;
     --font-size-to: 128px;
     --font-size-start: .4;
     --font-size-stop: .5;
-    font-size: clamp(var(--font-size-from), calc(var(--font-size-from) + (var(--font-size-to) - var(--font-size-from)) * ((var(--percentage) - var(--font-size-start)) / (var(--font-size-stop) - var(--font-size-start)))), var(--font-size-to));
+    font-size: 64px;
 
     --opacity-from: 1;
     --opacity-to: 0;
     --opacity-start: .8;
     --opacity-stop: .9;
+}
+.intro[data-dsap]:not([data-dsap=""]) {
+    height: 400vh;
+}
+
+.intro[data-dsap]:not([data-dsap=""]) h1 {
+    font-size: clamp(var(--font-size-from), calc(var(--font-size-from) + (var(--font-size-to) - var(--font-size-from)) * ((var(--percentage) - var(--font-size-start)) / (var(--font-size-stop) - var(--font-size-start)))), var(--font-size-to));
+    font-weight: clamp(var(--font-weight-from), calc(var(--font-weight-from) + (var(--font-weight-to) - var(--font-weight-from)) * ((var(--percentage) - var(--font-weight-start)) / (var(--font-weight-stop) - var(--font-weight-start)))), var(--font-weight-to));
+    gap: clamp(var(--gap-from), calc(var(--gap-from) + (var(--gap-to) - var(--gap-from)) * ((var(--percentage) - var(--gap-start)) / (var(--gap-stop) - var(--gap-start)))), var(--gap-to));
     opacity: clamp(var(--opacity-to), calc(var(--opacity-from) + (var(--opacity-to) - var(--opacity-from)) * ((var(--percentage) - var(--opacity-start)) / (var(--opacity-stop) - var(--opacity-start)))), var(--opacity-from));
 }
 
@@ -94,6 +102,10 @@ code {
     --span-opacity-to: 1;
     --span-opacity-start: .3;
     --span-opacity-stop: .4;
+    opacity: 1;
+}
+
+.intro[data-dsap]:not([data-dsap=""]) h1 span{
     opacity: clamp(var(--span-opacity-from), calc(var(--span-opacity-from) + (var(--span-opacity-to) - var(--span-opacity-from)) * ((var(--percentage) - var(--span-opacity-start)) / (var(--span-opacity-stop) - var(--span-opacity-start)))), var(--span-opacity-to));
 }
 
@@ -115,8 +127,8 @@ code {
 
 .intro__content {
     display: grid;
-    height: 100vh;
     place-items: center;
     position: sticky;
+    height: 100vh;
     top: 0;
 }
