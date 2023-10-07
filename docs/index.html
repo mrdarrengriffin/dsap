@@ -5,22 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSAP - Darren's Scrolling Animation Plugin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Young+Serif&display=swap"
-    rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300..500&family=Roboto+Serif:wght@100..900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./docs.css">
 </head>
 
 <body>
-    <h1>DSAP</h1>
-    <p>DSAP is a small library that provides you with the tools to create powerful CSS-based animations</p>
-    <h2>Features</h2>
-    <ul>
-        <li>💾 1.68 kB JS size </li>
-    </ul>
-    <h2>Usage</h2>
-    <p>Download the latest release from <a href="https://github.com/mrdarrengriffin/dsap/releases">GitHub</a> or use the CDN:</p>
-    <code>&lt;script type=&quot;module&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;import {DSAP} from &quot;https://cdn.jsdelivr.net/gh/mrdarrengriffin/dsap@0.0.3/dist/dsap.es.js&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;let dsap = new DSAP();<br>&lt;/script&gt;</code>
+    <div class="container">
+        <div class="intro" data-dsap>
+            <div class="intro__content">
+                <h1><span>D</span><span>S</span><span>A</span><span>P</span></h1>
+            </div>
+        </div>
+        <p class="muted">DSAP is a small library that provides you with the tools to create powerful CSS-based
+            animations</p>
+        <h2>Features</h2>
+        <ul>
+            <li>💾 1.68 kB JS size </li>
+        </ul>
+        <h2>Usage</h2>
+        <p>Download the latest release from <a href="https://github.com/mrdarrengriffin/dsap/releases">GitHub</a> or use
+            the CDN:</p>
+        <code>&lt;script type=&quot;module&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;import {DSAP} from &quot;https://cdn.jsdelivr.net/gh/mrdarrengriffin/dsap@0.0.3/dist/dsap.es.js&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;let dsap = new DSAP();<br>&lt;/script&gt;</code>
+    </div>
+    <script type="module">
+        import {DSAP} from "https://cdn.jsdelivr.net/gh/mrdarrengriffin/dsap@0.0.3/dist/dsap.es.js";
+        let dsap = new DSAP();
+    </script>
 </body>
+
 </html>
