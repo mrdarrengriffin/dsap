@@ -1,6 +1,6 @@
 var h = Object.defineProperty;
-var m = (s, e, t) => e in s ? h(s, e, { enumerable: !0, configurable: !0, writable: !0, value: t }) : s[e] = t;
-var r = (s, e, t) => (m(s, typeof e != "symbol" ? e + "" : e, t), t);
+var m = (l, t, e) => t in l ? h(l, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : l[t] = e;
+var r = (l, t, e) => (m(l, typeof t != "symbol" ? t + "" : t, e), e);
 class u {
   constructor() {
     r(this, "elems");
@@ -8,24 +8,24 @@ class u {
     this.init();
   }
   init() {
-    this.elems = document.querySelectorAll("[data-dsap]"), this.elems.forEach((e) => {
-      e.dataset.dsap = crypto.getRandomValues(new Uint32Array(1))[0].toString(16);
-    }), this.style = document.createElement("style"), this.style.id = "dsap-style", this.style.innerHTML = `:root{--dsap-max-scroll-delta: ${this.maxScrollDelta}}`, document.head.appendChild(this.style), window.addEventListener("scroll", this.debounce(this.onScroll.bind(this)), { passive: !0 });
+    this.elems = document.querySelectorAll("[data-dsap]"), this.elems.forEach((t) => {
+      t.dataset.dsap = crypto.getRandomValues(new Uint32Array(1))[0].toString(16);
+    }), this.style = document.createElement("style"), this.style.id = "dsap-style", this.style.innerHTML = `:root{--dsap-max-scroll-delta: ${this.maxScrollDelta}}`, document.head.appendChild(this.style), this.doScroll(), window.addEventListener("scroll", this.debounce(this.doScroll.bind(this)), { passive: !0 });
   }
-  onScroll() {
-    const e = window.scrollY, t = e + window.innerHeight;
-    let a = [`:root{--dsap-max-scroll-delta: ${this.maxScrollDelta}}`];
+  doScroll() {
+    const t = window.scrollY, e = t + window.innerHeight;
+    let s = [`:root{--dsap-max-scroll-delta: ${this.maxScrollDelta}}`];
     this.elems.forEach((i) => {
-      const o = i.getBoundingClientRect().top + e, c = o + i.getBoundingClientRect().height;
-      let l = !1, n = !1, d = 0;
-      t < o ? n = !1 : e > c ? n = !0 : l = !0, l ? d = ((t - o) / (i.getBoundingClientRect().height + window.innerHeight) * this.maxScrollDelta).toFixed(0) : n && (d = this.maxScrollDelta), i.dataset.dsapIs = l ? "in" : n ? "above" : "below", l && (i.dataset.dsapSeen = !0), a.push(`[data-dsap="${i.dataset.dsap}"]{--dsap-scroll-delta: ${d}}`);
-    }), this.style.innerHTML !== a.join("") && (this.style.innerHTML = a.join(""));
+      const o = i.getBoundingClientRect().top + t, c = o + i.getBoundingClientRect().height;
+      let a = !1, n = !1, d = 0;
+      e < o ? n = !1 : t > c ? n = !0 : a = !0, a ? d = ((e - o) / (i.getBoundingClientRect().height + window.innerHeight) * this.maxScrollDelta).toFixed(0) : n && (d = this.maxScrollDelta), i.dataset.dsapIs = a ? "in" : n ? "above" : "below", a && (i.dataset.dsapSeen = !0), s.push(`[data-dsap="${i.dataset.dsap}"]{--dsap-scroll-delta: ${d}}`);
+    }), this.style.innerHTML !== s.join("") && (this.style.innerHTML = s.join(""));
   }
-  debounce(e) {
-    let t;
-    return (...a) => {
-      t && cancelAnimationFrame(t), t = requestAnimationFrame(() => {
-        e(...a);
+  debounce(t) {
+    let e;
+    return (...s) => {
+      e && cancelAnimationFrame(e), e = requestAnimationFrame(() => {
+        t(...s);
       });
     };
   }
