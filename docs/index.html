@@ -11,6 +11,15 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300..500&family=Roboto+Serif:wght@100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="./docs.css">
+    <style>
+        [data-dsap=""],
+        [data-dsap=""] * {
+            transition: unset !important;
+            transition-delay: 0s !important;
+            transition-duration: 0s !important;
+            transition-property: 0s !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,22 +27,55 @@
         <div class="intro" data-dsap>
             <div class="intro__content">
                 <h1><span>D</span><span>S</span><span>A</span><span>P</span></h1>
+                <div class="scroll-indicator">
+                    Scroll down
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+                        <path fill="currentColor" d="M480-80 200-360l56-56 184 183v-647h80v647l184-184 56 57L480-80Z" />
+                    </svg>
+                </div>
             </div>
         </div>
-        <p class="muted">DSAP is a small library that provides you with the tools to create powerful CSS-based
-            animations</p>
-        <h2>Features</h2>
-        <ul>
-            <li>💾 1.68 kB JS size </li>
-        </ul>
-        <h2>Usage</h2>
-        <p>Download the latest release from <a href="https://github.com/mrdarrengriffin/dsap/releases">GitHub</a> or use
-            the CDN:</p>
-        <code>&lt;script type=&quot;module&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;import {DSAP} from &quot;https://cdn.jsdelivr.net/gh/mrdarrengriffin/dsap@0.0.3/dist/dsap.es.js&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;let dsap = new DSAP();<br>&lt;/script&gt;</code>
+        <div class="docs">
+            <div class="content">
+                <h2>Overview</h2>
+                <p>DSAP is a small library that provides you with the tools to create powerful CSS-based animations</p>
+                <h2>Usage</h2>
+                <p>Add <code>data-dsap</code> to elements you want to track in the viewport. DSAP will then calculate
+                    the position of the element in the viewport and keep track of it during scroll.</p>
+                <p>The following CSS variables are exposed to each instance of a DSAP element:</p>
+                <ul>
+                    <li><code>--dsap-scroll-delta</code> - This is the percentage of which the top of the element is visible in the
+                        current viewport. This value ranges from 0 to <code>--dsap-max-scroll-delta</code> (see below).
+                    </li>
+                </ul>
+                <p>The following global CSS variables are available globally to assist with calculations:</p>
+                <ul>
+                    <li><code>--dsap-max-scroll-delta</code> - Used as the value a scroll delta should interpolate
+                        between. By default, this is 1000.</li>
+                </ul>
+                <p>The following data attributes are present on all DSAP elements:</p>
+                <ul>
+                    <li><code>data-dsap</code> - As well as using this attrivute to tell DSAP to track this element</li>
+                    <li><code>data-dsap-is</code> - A simple value to determine if the element is "above", "in" or
+                        "below" the viewport. Useful for creating directional transitions. For example, Creating a fade
+                        in effect when the element enters the viewport from the bottom</li>
+                    <li><code>data-dsap-seen</code> - A true/false value indicating whether the element has ever entered
+                        the viewport. Useful for making one-time animations that don't trigger every time the element
+                        comes into the viewport</li>
+                </ul>
+
+                <h2>Get started</h2>
+                <p>Download the latest release from <a
+                        href="https://github.com/mrdarrengriffin/dsap/releases">GitHub</a> or
+                    use
+                    the CDN:</p>
+                <code>&lt;script type=&quot;module&quot;&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;import {DSAP} from &quot;https://cdn.jsdelivr.net/gh/mrdarrengriffin/dsap@0.0.3/dist/dsap.es.js&quot;;<br>&nbsp;&nbsp;&nbsp;&nbsp;let dsap = new DSAP();<br>&lt;/script&gt;</code>
+            </div>
+        </div>
     </div>
     <script type="module">
-        import {DSAP} from "https://cdn.jsdelivr.net/gh/mrdarrengriffin/dsap@0.0.4/dist/dsap.es.js";
-        let dsap = new DSAP();
+        import { DSAP } from "https://cdn.jsdelivr.net/gh/mrdarrengriffin/dsap@0.0.4/dist/dsap.es.js";
+        let dsap = new DSAP();        
     </script>
 </body>
 
