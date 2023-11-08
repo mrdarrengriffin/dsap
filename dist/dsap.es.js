@@ -1,11 +1,12 @@
 var h = Object.defineProperty;
-var m = (l, t, e) => t in l ? h(l, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : l[t] = e;
-var r = (l, t, e) => (m(l, typeof t != "symbol" ? t + "" : t, e), e);
+var p = (s, t, e) => t in s ? h(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
+var n = (s, t, e) => (p(s, typeof t != "symbol" ? t + "" : t, e), e);
 class u {
-  constructor() {
-    r(this, "elems");
-    r(this, "maxScrollDelta", 1e3);
-    this.init();
+  constructor(t = {}) {
+    n(this, "elems");
+    n(this, "maxScrollDelta", 1e3);
+    n(this, "defaultOptions", { trackPosition: !0 });
+    this.options = { ...this.defaultOptions, ...t }, this.init();
   }
   init() {
     this.elems = document.querySelectorAll("[data-dsap]"), this.elems.forEach((t) => {
@@ -14,18 +15,18 @@ class u {
   }
   doScroll() {
     const t = window.scrollY, e = t + window.innerHeight;
-    let s = [`:root{--dsap-max-scroll-delta: ${this.maxScrollDelta}}`];
+    let o = [`:root{--dsap-max-scroll-delta: ${this.maxScrollDelta}}`];
     this.elems.forEach((i) => {
-      const o = i.getBoundingClientRect().top + t, c = o + i.getBoundingClientRect().height;
-      let a = !1, n = !1, d = 0;
-      e < o ? n = !1 : t > c ? n = !0 : a = !0, a ? d = ((e - o) / (i.getBoundingClientRect().height + window.innerHeight) * this.maxScrollDelta).toFixed(0) : n && (d = this.maxScrollDelta), i.dataset.dsapIs = a ? "in" : n ? "above" : "below", a && (i.dataset.dsapSeen = !0), s.push(`[data-dsap="${i.dataset.dsap}"]{--dsap-scroll-delta: ${d}}`);
-    }), this.style.innerHTML !== s.join("") && (this.style.innerHTML = s.join(""));
+      const d = i.getBoundingClientRect().top + t, c = d + i.getBoundingClientRect().height;
+      let l = !1, a = !1, r = 0;
+      e < d ? a = !1 : t > c ? a = !0 : l = !0, this.options.trackPosition && (l ? r = ((e - d) / (i.getBoundingClientRect().height + window.innerHeight) * this.maxScrollDelta).toFixed(0) : a && (r = this.maxScrollDelta)), i.dataset.dsapIs = l ? "in" : a ? "above" : "below", l && (i.dataset.dsapSeen = !0), this.options.trackPosition && o.push(`[data-dsap="${i.dataset.dsap}"]{--dsap-scroll-delta: ${r}}`);
+    }), this.style.innerHTML !== o.join("") && (this.style.innerHTML = o.join(""));
   }
   debounce(t) {
     let e;
-    return (...s) => {
+    return (...o) => {
       e && cancelAnimationFrame(e), e = requestAnimationFrame(() => {
-        t(...s);
+        t(...o);
       });
     };
   }
