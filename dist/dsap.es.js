@@ -1,7 +1,7 @@
 var m = Object.defineProperty;
 var p = (a, t, e) => t in a ? m(a, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : a[t] = e;
 var r = (a, t, e) => (p(a, typeof t != "symbol" ? t + "" : t, e), e);
-class S {
+class g {
   constructor() {
     r(this, "elems");
     r(this, "maxScrollDelta", 1e3);
@@ -15,10 +15,10 @@ class S {
   doScroll() {
     const t = window.scrollY, e = t + window.innerHeight;
     let i = [`:root{--dsap-max-scroll-delta: ${this.maxScrollDelta}}`];
-    this.elems.forEach((l) => {
-      const o = l.getBoundingClientRect().top + t, h = o + l.getBoundingClientRect().height, c = !!l.dataset.dsapScroll;
-      let s = !1, n = !1, d = 0;
-      e < o ? n = !1 : t > h ? n = !0 : s = !0, c && (s ? d = ((e - o) / (l.getBoundingClientRect().height + window.innerHeight) * this.maxScrollDelta).toFixed(0) : n && (d = this.maxScrollDelta)), l.dataset.dsapIs = s ? "in" : n ? "above" : "below", s && (l.dataset.dsapSeen = !0), c && i.push(`[data-dsap="${l.dataset.dsap}"]{--dsap-scroll-delta: ${d}}`);
+    this.elems.forEach((s) => {
+      const o = s.getBoundingClientRect().top + t, h = o + s.getBoundingClientRect().height, c = s.hasAttribute("data-dsap-scroll");
+      let l = !1, n = !1, d = 0;
+      e < o ? n = !1 : t > h ? n = !0 : l = !0, c && (l ? d = ((e - o) / (s.getBoundingClientRect().height + window.innerHeight) * this.maxScrollDelta).toFixed(0) : n && (d = this.maxScrollDelta)), s.dataset.dsapIs = l ? "in" : n ? "above" : "below", l && (s.dataset.dsapSeen = !0), c && i.push(`[data-dsap="${s.dataset.dsap}"]{--dsap-scroll-delta: ${d}}`);
     }), this.style.innerHTML !== i.join("") && (this.style.innerHTML = i.join(""));
   }
   debounce(t) {
@@ -31,5 +31,5 @@ class S {
   }
 }
 export {
-  S as DSAP
+  g as DSAP
 };

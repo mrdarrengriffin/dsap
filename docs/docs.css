@@ -2,14 +2,18 @@ body,
 html {
     margin: 0;
     padding: 0;
+    line-height: 1.5;
+}
+
+p,li{
 }
 
 
 :root {
-    --white: #ffffff;
+    --: #ffffff;
     --black: #000000;
 
-    --primary: #1c1c27;
+    --primary: #f9f9f9;
 
     --theme: var(--primary);
 
@@ -25,7 +29,7 @@ html {
     --darker: color-mix(in srgb, #000000 10%, var(--primary));
     --darkest: color-mix(in srgb, #000000 20%, var(--primary));
 
-    --shadow: 0 2rem 2rem rgba(0, 0, 0, .15);
+    --shadow: 0 2px 4px rgba(0, 0, 0, .15);
 }
 
 [data-dsap] {
@@ -35,7 +39,7 @@ html {
 
 body {
     background-color: var(--background);
-    color: var(--text-color);
+    color: var(--black);
     font-family: 'Inter', sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -48,56 +52,25 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--heading-text);
+    color: var(--black);
     font-family: "Roboto Serif", serif;
     font-weight: 500;
     transition: font-weight .2s ease-out;
 }
 
 code {
-    background-color: var(--darkest);
+    background-color: #3b3b3b;
     border: 1px solid var(--overlay-border);
-    border-radius: 8px;
-    box-shadow: var(--shadow);
+    border-radius: 4px;
+    color: #ffffff;
     display: inline-block;
-    padding: .25rem .5rem;
+    padding: .125rem .5rem;
 }
-
-
-ul li a {
-    text-decoration: none;
-    color: var(--text-color);
-    padding: .75rem 1rem;
-    border-radius: 8px;
-    display: block;
-    transition: background-color .2s ease-out, color .2s ease-out, box-shadow .2s ease-out;
-    background-color: var(--primary);
-    box-shadow: 0 0px 0 var(--darkest);
-}
-
-ul li a:hover {
-    background-color: var(--light-1);
-    color: var(--whiter);
-}
-
-ul li a.active {
-    --background: var(--light-1);
-    background-color: var(--background);
-    box-shadow: 0 5px 0 var(--darkest);
-    color: var(--white);
-}
-
-ul li a:hover,
-ul li a.active {}
 
 .container {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
-}
-
-.muted {
-    color: var(--muted);
 }
 
 .docs {
@@ -121,7 +94,7 @@ ul li a.active {}
 .intro h1 {
     display: flex;
     position: relative;
-    transition: font-weight .2s ease-out, opacity .2s ease-out, gap .2s ease-out, font-size .2s ease-out;
+    transition: font-weight .2s ease-out, opacity .2s ease-out, gap .2s ease-out, font-size .2s ease-out, scale .2s ease-out;
 
     --font-weight-from: 100;
     --font-weight-to: 700;
@@ -137,8 +110,8 @@ ul li a.active {}
 
     --font-size-from: 0.75;
     --font-size-to: 1;
-    --font-size-start: .3;
-    --font-size-stop: .8;
+    --font-size-start: .25;
+    --font-size-stop: 1;
     font-size: 96px;
 
     --opacity-from: 1;
@@ -154,6 +127,7 @@ ul li a.active {}
 
 .intro[data-dsap]:not([data-dsap=""]) h1 {
     scale: clamp(var(--font-size-from), calc(var(--font-size-from) + (var(--font-size-to) - var(--font-size-from)) * ((var(--percentage) - var(--font-size-start)) / (var(--font-size-stop) - var(--font-size-start)))), var(--font-size-to));
+
     //font-weight: clamp(var(--font-weight-from), calc(var(--font-weight-from) + (var(--font-weight-to) - var(--font-weight-from)) * ((var(--percentage) - var(--font-weight-start)) / (var(--font-weight-stop) - var(--font-weight-start)))), var(--font-weight-to));
     //gap: clamp(var(--gap-from), calc(var(--gap-from) + (var(--gap-to) - var(--gap-from)) * ((var(--percentage) - var(--gap-start)) / (var(--gap-stop) - var(--gap-start)))), var(--gap-to));
    // opacity: clamp(var(--opacity-to), calc(var(--opacity-from) + (var(--opacity-to) - var(--opacity-from)) * ((var(--percentage) - var(--opacity-start)) / (var(--opacity-stop) - var(--opacity-start)))), var(--opacity-from));
