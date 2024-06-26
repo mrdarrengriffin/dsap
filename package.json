@@ -1,6 +1,6 @@
 {
   "name": "dsap",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "Lightweight CSS animation library",
   "main": "./dist/dsap.umd.js",
   "module": "./dist/dsap.es.js",
